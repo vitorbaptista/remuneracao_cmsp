@@ -6,6 +6,7 @@ class CamaraSp(scrapy.Spider):
     name = 'salarios_camara_sp'
     start_urls = [
         'http://www.camara.sp.gov.br/wp-content/uploads/salariosabertos/HTML_ativos_2017_09/todos.html',
+        'http://www.camara.sp.gov.br/wp-content/uploads/salariosabertos/HTML_ativos_2017_10/todos.html',
     ]
 
     def parse(self, response):
@@ -16,8 +17,6 @@ class CamaraSp(scrapy.Spider):
                 current_lotacao = row.css('.lin_lotacao::text').extract_first().strip()
             elif self._is_person_row(row):
                 yield self._parse_person_row(row, current_lotacao, date_of_reference)
-
-        pass
 
     def _is_lotacao_row(self, row):
         return bool(row.css('.lin_lotacao'))

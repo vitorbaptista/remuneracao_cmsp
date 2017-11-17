@@ -55,12 +55,11 @@ class CamaraSp(scrapy.Spider):
             return person
 
     def _parse_salary(self, row):
-        if bool(row.css('.remun_unica')):
-            salary = row.css('.remun_unica a::text').extract_first()
-        else:
-            salary = row.css('tr:last_child .remun_dir a::text').extract_first()
+        potential_salaries = row.css('a::text').extract()
 
-        if salary:
+        if potential_salaries:
+            # Consideramos somente o valor após todos descontos
+            salary = potential_salaries[-1]
             return self._currency_str_to_float(salary.strip())
 
     def _currency_str_to_float(self, currency):

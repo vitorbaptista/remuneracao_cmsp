@@ -1,0 +1,10 @@
+{
+    "name": "salaries-cmsp",
+    "title": "Salaries from the civil servants from the Câmara Municipal de São Paulo",
+    "resources": [
+        {
+            "name": "salaries",
+            "path": "data/salarios.csv"
+        }
+    ]
+}

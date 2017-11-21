@@ -2,8 +2,8 @@ import scrapy
 import re
 
 
-class CamaraSp(scrapy.Spider):
-    name = 'salarios_camara_sp'
+class Remunerations(scrapy.Spider):
+    name = 'remunerations'
     start_urls = [
         'http://www.camara.sp.gov.br/wp-content/uploads/salariosabertos/HTML_ativos_2017_09/todos.html',
         'http://www.camara.sp.gov.br/wp-content/uploads/salariosabertos/HTML_ativos_2017_10/todos.html',
@@ -39,18 +39,18 @@ class CamaraSp(scrapy.Spider):
 
     def _parse_person_row(self, row, lotacao, date_of_reference):
         person = {
-            'nome': row.css('.nome_valor::text').extract_first().strip(),
-            'cargo': row.css('.cargo_valor::text').extract_first().strip(),
-            'funcao': row.css('.funcao_valor::text').extract_first().strip(),
-            'remuneracao': self._parse_salary(row.css('.remun_valor')),
-            'lotacao': lotacao,
+            'name': row.css('.nome_valor::text').extract_first().strip(),
+            'role': row.css('.cargo_valor::text').extract_first().strip(),
+            'function': row.css('.funcao_valor::text').extract_first().strip(),
+            'remuneration': self._parse_salary(row.css('.remun_valor')),
+            'department': lotacao,
         }
 
         if date_of_reference:
-            person['ano'] = date_of_reference['year']
-            person['mes'] = date_of_reference['month']
+            person['year'] = date_of_reference['year']
+            person['month'] = date_of_reference['month']
 
-        if person['cargo'] != '-':
+        if person['role'] != '-':
             return person
 
     def _parse_salary(self, row):

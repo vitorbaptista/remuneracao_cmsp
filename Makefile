@@ -1,6 +1,6 @@
-data/salarios.csv:
+data/remunerations.csv:
 	mkdir -p data/
-	scrapy crawl salarios_camara_sp -o data/salarios.csv
+	scrapy crawl remunerations -o data/remunerations.csv
 
 clean:
 	rm -rf data/

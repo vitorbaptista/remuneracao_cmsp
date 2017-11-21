@@ -4,7 +4,51 @@
     "resources": [
         {
             "name": "salaries",
-            "path": "data/salarios.csv"
+            "path": "data/salarios.csv",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "nome",
+                        "type": "string"
+                    },
+                    {
+                        "name": "cargo",
+                        "type": "string"
+                    },
+                    {
+                        "name": "funcao",
+                        "type": "string"
+                    },
+                    {
+                        "name": "remuneracao",
+                        "type": "number"
+                    },
+                    {
+                        "name": "lotacao",
+                        "type": "string",
+                        "constraints": {
+                          "required": true
+                        }
+                    },
+                    {
+                        "name": "ano",
+                        "type": "integer",
+                        "constraints": {
+                          "required": true,
+                          "minimum": 2017
+                        }
+                    },
+                    {
+                        "name": "mes",
+                        "type": "integer",
+                        "constraints": {
+                          "required": true,
+                          "minimum": 1,
+                          "maximum": 12
+                        }
+                    }
+                ]
+            }
         }
     ]
 }

@@ -1,17 +1,36 @@
-# Salários da Câmara Municipal de São Paulo (CMSP)
+# Remunerations of the São Paulo Civil Council's public servants
 
-Este repositório contém um scraper para extrair os dados da remuneração dos
-servidores efetivos e comissionados da Câmara Municipal de São Paulo. Os dados
-estão disponíveis no site da [CMSP][cmsp-remuneracao], e você pode encontrar os
-dados já extraídos usando esse scraper no arquivo [data/remunerations.csv][data].
+This repository contains a scraper that extracts the remuneration data from
+the [São Paulo's Civil Council website][cmsp-remuneracao]. You can find the data
+already extracted on [data/remuneration.csv][data].
 
-## Atualizando os dados
+This repository is also a [Data Package][datapackage], so you can use any tools that
+support the specification.
 
-Para atualizar os dados, você precisa ter Python 3.5+ e o [tox][tox] instalado.
-Depois de instalá-los, basta você clonar esse repositório e executar `make
-clean && make install` na linha de comando.
+## Using
+
+### Requirements
+
+The only requirements to run this code is Python 3.6 and [tox][tox] (it'll probably run
+with earlier version of Python, but I haven't tested it).
+
+### Updating the data
+
+To update the data, open your command-line and run:
+
+```
+make clean
+make
+```
+
+### Validating the data
+
+We use [goodtables][goodtables] to validate that the data we extract conforms to the schema
+we defined in the [datapackage.json](datapackage.json) file. To execute the tests, simply run
+`tox`.
 
 [tox]: https://tox.readthedocs.io/en/latest/
 [cmsp-remuneracao]: http://www.camara.sp.gov.br/transparencia/salarios-abertos/remuneracao-dos-servidores-e-comissionados/
 [data]: data/remuneration.csv
-[datapackage]: datapackage.json
+[datapackage]: https://frictionlessdata.io/data-packages/
+[goodtables]: https://github.com/frictionlessdata/goodtables-py/

@@ -3,7 +3,7 @@
 Este repositório contém um scraper para extrair os dados da remuneração dos
 servidores efetivos e comissionados da Câmara Municipal de São Paulo. Os dados
 estão disponíveis no site da [CMSP][cmsp-remuneracao], e você pode encontrar os
-dados já extraídos usando esse scraper no arquivo [data/remuneration.csv][data].
+dados já extraídos usando esse scraper no arquivo [data/remunerations.csv][data].
 
 ## Atualizando os dados
 
